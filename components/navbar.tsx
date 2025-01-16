@@ -3,7 +3,7 @@ import MobileSidebar from "@/components/mobile-sidebar";
 
 const Navbar = async () => {
     // Placeholder URL for the "Contact Us" button
-    const contactUsUrl = "https://qihoffsy0dg.typeform.com/to/uoYjYq00";
+    const contactUsUrl = "https://deriv-affiliate.tiiny.site";
 
     return ( 
         <div className="flex items-center p-4">
