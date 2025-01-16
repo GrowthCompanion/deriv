@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head> 
-        <title> Alpharithm AI </title>
+        <title> Deriv AI Affiliate </title>
         <meta name="title" content="Deriv AI" />
         <meta name="description" content="Deriv AI" />
       </head>
