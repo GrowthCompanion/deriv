@@ -1,0 +1,3035 @@
+2024-02-29 17:57:32 [INFO] Question: how many
+2024-02-29 17:57:32 [INFO] Running PandasAI with openai LLM...
+2024-02-29 17:57:32 [INFO] Prompt ID: c7f9abeb-f253-49bd-9a7c-01037757c078
+2024-02-29 17:57:32 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+</dataframe>
+
+<conversation>
+User: how many
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 17:57:38 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 17:57:38 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    return { "type": "number", "value": dfs[0].shape[0] }
+```
+
+2024-02-29 17:57:38 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 17:57:38 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    return {'type': 'number', 'value': dfs[0].shape[0]}
+        ```
+2024-02-29 17:57:38 [INFO] Answer: {'type': 'number', 'value': 500}
+2024-02-29 17:57:38 [INFO] Executed in: 6.802273988723755s
+2024-02-29 17:57:38 [INFO] 127.0.0.1 - - [29/Feb/2024 17:57:38] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 18:00:07 [INFO]  * Detected change in '/Users/arvin/Documents/SINGL- DEMO/backend/back.py', reloading
+2024-02-29 18:00:19 [INFO] Question: how many customers are there from france
+2024-02-29 18:00:19 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:00:19 [INFO] Prompt ID: b026810b-c383-4b1e-ac0a-daa51dc38c0c
+2024-02-29 18:00:19 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+</dataframe>
+
+<conversation>
+User: how many customers are there from france
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 18:00:25 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:00:25 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Process
+    num_customers_france = dfs[0][dfs[0]['Geography'] == 'France'].shape[0]
+    
+    return { "type": "number", "value": num_customers_france }
+```
+
+2024-02-29 18:00:25 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:00:25 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    num_customers_france = dfs[0][dfs[0]['Geography'] == 'France'].shape[0]
+    return {'type': 'number', 'value': num_customers_france}
+        ```
+2024-02-29 18:00:25 [INFO] Answer: {'type': 'number', 'value': 232}
+2024-02-29 18:00:25 [INFO] Executed in: 6.085943222045898s
+2024-02-29 18:00:25 [INFO] 127.0.0.1 - - [29/Feb/2024 18:00:25] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 18:02:44 [INFO] 127.0.0.1 - - [29/Feb/2024 18:02:44] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 18:02:44 [INFO] Question: how many customers are there from spain
+2024-02-29 18:02:44 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:02:44 [INFO] Prompt ID: 91086335-35ff-4fe1-b4b1-76f9cc7b8b05
+2024-02-29 18:02:44 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+</dataframe>
+
+<conversation>
+User: how many customers are there from spain
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 18:02:50 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:02:50 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Process
+    # Count the number of customers from Spain
+    num_customers_spain = dfs[0][dfs[0]['Geography'] == 'Spain'].shape[0]
+    
+    return { "type": "number", "value": num_customers_spain }
+```
+
+2024-02-29 18:02:50 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:02:50 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    num_customers_spain = dfs[0][dfs[0]['Geography'] == 'Spain'].shape[0]
+    return {'type': 'number', 'value': num_customers_spain}
+        ```
+2024-02-29 18:02:50 [INFO] Answer: {'type': 'number', 'value': 127}
+2024-02-29 18:02:50 [INFO] Executed in: 6.014636993408203s
+2024-02-29 18:02:50 [INFO] 127.0.0.1 - - [29/Feb/2024 18:02:50] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 18:05:15 [INFO] 127.0.0.1 - - [29/Feb/2024 18:05:15] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 18:05:15 [INFO] Question: how many people with name andrews are there?
+2024-02-29 18:05:15 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:05:15 [INFO] Prompt ID: 33d5d436-d2f3-459b-a082-ea9a09467e1c
+2024-02-29 18:05:15 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+</dataframe>
+
+<conversation>
+User: how many people with name andrews are there?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 18:05:22 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:05:22 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Processing the data to answer the user's question
+    num_andrews = dfs[0]['Surname'].str.count('Andrews').sum()
+    
+    # Returning the result
+    return { "type": "number", "value": num_andrews }
+```
+
+2024-02-29 18:05:22 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:05:22 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    num_andrews = dfs[0]['Surname'].str.count('Andrews').sum()
+    return {'type': 'number', 'value': num_andrews}
+        ```
+2024-02-29 18:05:22 [INFO] Answer: {'type': 'number', 'value': 1}
+2024-02-29 18:05:22 [INFO] Executed in: 7.121718883514404s
+2024-02-29 18:05:22 [INFO] 127.0.0.1 - - [29/Feb/2024 18:05:22] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2024-02-29 18:07:37 [INFO]  * Detected change in '/Users/arvin/Documents/SINGL- DEMO/backend/back.py', reloading
+2024-02-29 18:08:11 [INFO] Question: how many people with name andrews are there?
+2024-02-29 18:08:11 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:08:11 [INFO] Prompt ID: fc51657f-b0b0-4659-89bc-7cd01abdc699
+2024-02-29 18:08:11 [INFO] Using cached response
+2024-02-29 18:08:11 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Processing the data to answer the user's question
+    num_andrews = dfs[0]['Surname'].str.count('Andrews').sum()
+    
+    # Returning the result
+    return { "type": "number", "value": num_andrews }
+```
+
+2024-02-29 18:08:11 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:08:11 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    num_andrews = dfs[0]['Surname'].str.count('Andrews').sum()
+    return {'type': 'number', 'value': num_andrews}
+        ```
+2024-02-29 18:08:11 [INFO] Answer: {'type': 'number', 'value': 1}
+2024-02-29 18:08:11 [INFO] Executed in: 0.0626380443572998s
+2024-02-29 18:08:11 [INFO] 127.0.0.1 - - [29/Feb/2024 18:08:11] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2024-02-29 18:08:21 [INFO]  * Detected change in '/Users/arvin/Documents/SINGL- DEMO/backend/back.py', reloading
+2024-02-29 18:08:25 [INFO] Question: how many people with name andrews are there?
+2024-02-29 18:08:25 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:08:25 [INFO] Prompt ID: b2b9ee5e-8d19-4226-afc5-4c8f47c792c9
+2024-02-29 18:08:25 [INFO] Using cached response
+2024-02-29 18:08:25 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Processing the data to answer the user's question
+    num_andrews = dfs[0]['Surname'].str.count('Andrews').sum()
+    
+    # Returning the result
+    return { "type": "number", "value": num_andrews }
+```
+
+2024-02-29 18:08:25 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:08:25 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    num_andrews = dfs[0]['Surname'].str.count('Andrews').sum()
+    return {'type': 'number', 'value': num_andrews}
+        ```
+2024-02-29 18:08:25 [INFO] Answer: {'type': 'number', 'value': 1}
+2024-02-29 18:08:25 [INFO] Executed in: 0.0705108642578125s
+2024-02-29 18:08:25 [INFO] 127.0.0.1 - - [29/Feb/2024 18:08:25] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2024-02-29 18:09:14 [INFO]  * Detected change in '/Users/arvin/Documents/SINGL- DEMO/backend/back.py', reloading
+2024-02-29 18:09:16 [INFO] Question: how many people with name andrews are there?
+2024-02-29 18:09:16 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:09:16 [INFO] Prompt ID: b1d1412e-6f79-4e9b-a589-d6d4cf1c6cf9
+2024-02-29 18:09:16 [INFO] Using cached response
+2024-02-29 18:09:16 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Processing the data to answer the user's question
+    num_andrews = dfs[0]['Surname'].str.count('Andrews').sum()
+    
+    # Returning the result
+    return { "type": "number", "value": num_andrews }
+```
+
+2024-02-29 18:09:16 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:09:16 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    num_andrews = dfs[0]['Surname'].str.count('Andrews').sum()
+    return {'type': 'number', 'value': num_andrews}
+        ```
+2024-02-29 18:09:16 [INFO] Answer: {'type': 'number', 'value': 1}
+2024-02-29 18:09:16 [INFO] Executed in: 0.07291793823242188s
+2024-02-29 18:09:16 [INFO] 127.0.0.1 - - [29/Feb/2024 18:09:16] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 18:09:33 [INFO] 127.0.0.1 - - [29/Feb/2024 18:09:33] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 18:09:34 [INFO] Question: how many people  are there?
+2024-02-29 18:09:34 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:09:34 [INFO] Prompt ID: 0a01a941-49c6-4a9d-9e2d-c8b39b3cdb92
+2024-02-29 18:09:34 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+</dataframe>
+
+<conversation>
+User: how many people  are there?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 18:09:39 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:09:39 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the number of rows in the first dataframe
+    num_rows = dfs[0].shape[0]
+    
+    return { "type": "number", "value": num_rows }
+```
+
+2024-02-29 18:09:39 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:09:39 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    num_rows = dfs[0].shape[0]
+    return {'type': 'number', 'value': num_rows}
+        ```
+2024-02-29 18:09:39 [INFO] Answer: {'type': 'number', 'value': 500}
+2024-02-29 18:09:39 [INFO] Executed in: 5.641519069671631s
+2024-02-29 18:09:39 [INFO] 127.0.0.1 - - [29/Feb/2024 18:09:39] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 18:10:58 [INFO]  * Detected change in '/Users/arvin/Documents/SINGL- DEMO/backend/back.py', reloading
+2024-02-29 18:16:35 [INFO] Question: how many people  are there?
+2024-02-29 18:16:35 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:16:35 [INFO] Prompt ID: a6ab4b31-6e71-4de9-aebd-209b23d1af43
+2024-02-29 18:16:35 [INFO] Using cached response
+2024-02-29 18:16:35 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the number of rows in the first dataframe
+    num_rows = dfs[0].shape[0]
+    
+    return { "type": "number", "value": num_rows }
+```
+
+2024-02-29 18:16:35 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:16:35 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    num_rows = dfs[0].shape[0]
+    return {'type': 'number', 'value': num_rows}
+        ```
+2024-02-29 18:16:35 [INFO] Answer: {'type': 'number', 'value': 500}
+2024-02-29 18:16:35 [INFO] Executed in: 0.06734275817871094s
+2024-02-29 18:16:35 [INFO] 127.0.0.1 - - [29/Feb/2024 18:16:35] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 18:17:24 [INFO] 127.0.0.1 - - [29/Feb/2024 18:17:24] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 18:17:24 [INFO] Question: how many records
+2024-02-29 18:17:24 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:17:24 [INFO] Prompt ID: 53769143-f23b-4adb-ba86-aab754349b13
+2024-02-29 18:17:24 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+</dataframe>
+
+<conversation>
+User: how many records
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 18:17:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:17:31 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    if "how many records" in conversation[-1]:
+        return {"type": "string", "value": f"The total number of records is {len(dfs[0])}."}
+```
+
+2024-02-29 18:17:31 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:17:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    if 'how many records' in conversation[-1]:
+        return {'type': 'string', 'value': f'The total number of records is {len(dfs[0])}.'}
+        ```
+2024-02-29 18:17:31 [WARNING] Error of executing code
+2024-02-29 18:17:31 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-02-29 18:17:31 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/smart_datalake/__init__.py", line 438, in chat
+    result = self._code_manager.execute_code(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 286, in execute_code
+    return analyze_data(self._get_originals(dfs))
+  File "<string>", line 20, in analyze_data
+NameError: name 'conversation' is not defined
+. Retrying
+2024-02-29 18:17:31 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+</dataframe>
+
+The user asked the following question:
+User: how many records
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    if "how many records" in conversation[-1]:
+        return {"type": "string", "value": f"The total number of records is {len(dfs[0])}."}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/smart_datalake/__init__.py", line 438, in chat
+    result = self._code_manager.execute_code(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 286, in execute_code
+    return analyze_data(self._get_originals(dfs))
+  File "<string>", line 20, in analyze_data
+NameError: name 'conversation' is not defined
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2024-02-29 18:17:40 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:17:40 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:17:41 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    if 'how many records' in conversation[-1]:
+        return {'type': 'string', 'value': f'The total number of records is {len(dfs[0])}.'}
+
+
+conversation = ['how many records']
+dfs = [pd.DataFrame({'RowNumber': [3, 1, 2], 'CustomerId': [15619304, 15634602, 15647311], 'Surname': ['Onio', 'Hargrave', 'Hill'], 'CreditScore': [502, 619, 608], 'Geography': ['France', 'France', 'Spain'], 'Gender': ['Female', 'Female', 'Female'], 'Age': [42.0, 42.0, 41.0], 'Tenure': [8, 2, 1], 'Balance': [159660.8, 0.0, 83807.86], 'NumOfProducts': [3, 1, 1], 'HasCrCard': [1.0, 1.0, 0.0], 'IsActiveMember': [0.0, 1.0, 1.0], 'EstimatedSalary': [113931.57, 101348.88, 112542.58], 'Exited': [1, 1, 0]})]
+print(analyze_data(dfs))
+        ```
+2024-02-29 18:17:41 [INFO] Answer: {'type': 'string', 'value': 'The total number of records is 500.'}
+2024-02-29 18:17:41 [INFO] Executed in: 16.399805068969727s
+2024-02-29 18:17:41 [INFO] 127.0.0.1 - - [29/Feb/2024 18:17:41] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 18:22:20 [INFO] 127.0.0.1 - - [29/Feb/2024 18:22:20] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 18:22:20 [INFO] Question: how many records?
+2024-02-29 18:22:20 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:22:20 [INFO] Prompt ID: 0cd380b2-621a-4714-9146-b0f6bf0986ae
+2024-02-29 18:22:20 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+</dataframe>
+
+<conversation>
+User: how many records?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 18:22:26 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:22:26 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    if "how many records?" in dfs[0].columns:
+        return {"type": "string", "value": f"The number of records is {len(dfs[0])}."}
+    else:
+        return {"type": "string", "value": "Please ask a valid question."}
+```
+
+2024-02-29 18:22:26 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:22:26 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    if 'how many records?' in dfs[0].columns:
+        return {'type': 'string', 'value': f'The number of records is {len(dfs[0])}.'}
+    else:
+        return {'type': 'string', 'value': 'Please ask a valid question.'}
+        ```
+2024-02-29 18:22:26 [INFO] Answer: {'type': 'string', 'value': 'Please ask a valid question.'}
+2024-02-29 18:22:26 [INFO] Executed in: 6.4913718700408936s
+2024-02-29 18:22:26 [INFO] 127.0.0.1 - - [29/Feb/2024 18:22:26] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 18:26:42 [INFO] 127.0.0.1 - - [29/Feb/2024 18:26:42] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 18:26:42 [INFO] Question: how many customers are there
+2024-02-29 18:26:42 [INFO] Running PandasAI with openai LLM...
+2024-02-29 18:26:42 [INFO] Prompt ID: 81c1e6d0-20ec-4d1f-813b-d0580b748b4d
+2024-02-29 18:26:42 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+</dataframe>
+
+<conversation>
+User: how many customers are there
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 18:26:49 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:26:49 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    if "how many customers are there" in message.lower():
+        return {
+            "type": "number",
+            "value": dfs[0].shape[0]
+        }
+```
+
+2024-02-29 18:26:49 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:26:49 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    if 'how many customers are there' in message.lower():
+        return {'type': 'number', 'value': dfs[0].shape[0]}
+        ```
+2024-02-29 18:26:49 [WARNING] Error of executing code
+2024-02-29 18:26:49 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-02-29 18:26:49 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/smart_datalake/__init__.py", line 438, in chat
+    result = self._code_manager.execute_code(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 286, in execute_code
+    return analyze_data(self._get_originals(dfs))
+  File "<string>", line 20, in analyze_data
+NameError: name 'message' is not defined
+. Retrying
+2024-02-29 18:26:49 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+</dataframe>
+
+The user asked the following question:
+User: how many customers are there
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    if "how many customers are there" in message.lower():
+        return {
+            "type": "number",
+            "value": dfs[0].shape[0]
+        }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/smart_datalake/__init__.py", line 438, in chat
+    result = self._code_manager.execute_code(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 286, in execute_code
+    return analyze_data(self._get_originals(dfs))
+  File "<string>", line 20, in analyze_data
+NameError: name 'message' is not defined
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2024-02-29 18:26:55 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:26:55 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:26:55 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame], message: str) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    if 'how many customers are there' in message.lower():
+        return {'type': 'number', 'value': dfs[0].shape[0]}
+        ```
+2024-02-29 18:26:55 [WARNING] Error of executing code
+2024-02-29 18:26:55 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2024-02-29 18:26:55 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/smart_datalake/__init__.py", line 438, in chat
+    result = self._code_manager.execute_code(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 286, in execute_code
+    return analyze_data(self._get_originals(dfs))
+TypeError: analyze_data() missing 1 required positional argument: 'message'
+. Retrying
+2024-02-29 18:26:55 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+</dataframe>
+
+The user asked the following question:
+User: how many customers are there
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    if "how many customers are there" in message.lower():
+        return {
+            "type": "number",
+            "value": dfs[0].shape[0]
+        }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/smart_datalake/__init__.py", line 438, in chat
+    result = self._code_manager.execute_code(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 286, in execute_code
+    return analyze_data(self._get_originals(dfs))
+TypeError: analyze_data() missing 1 required positional argument: 'message'
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2024-02-29 18:27:02 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 18:27:02 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 18:27:02 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame], message: str) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    if 'how many customers are there' in message.lower():
+        return {'type': 'number', 'value': dfs[0].shape[0]}
+        ```
+2024-02-29 18:27:02 [WARNING] Error of executing code
+2024-02-29 18:27:02 [INFO] 127.0.0.1 - - [29/Feb/2024 18:27:02] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 20:28:32 [INFO] 127.0.0.1 - - [29/Feb/2024 20:28:32] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 20:28:32 [INFO] Question: how many data?
+2024-02-29 20:28:32 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:28:32 [INFO] Prompt ID: 02177723-7e92-44ae-856a-3d576f2d02dc
+2024-02-29 20:28:32 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+</dataframe>
+
+<conversation>
+User: how many data?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 20:28:41 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 20:28:41 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extracting the last message from the conversation
+    last_message = "how many data?"
+    
+    # Checking the last message to determine the response
+    if last_message == "how many data?":
+        # Returning the number of rows and columns in the first dataframe
+        return { "type": "string", "value": f"The first dataframe has {dfs[0].shape[0]} rows and {dfs[0].shape[1]} columns." }
+```
+
+2024-02-29 20:28:41 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:28:41 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    last_message = 'how many data?'
+    if last_message == 'how many data?':
+        return {'type': 'string', 'value': f'The first dataframe has {dfs[0].shape[0]} rows and {dfs[0].shape[1]} columns.'}
+        ```
+2024-02-29 20:28:41 [INFO] Answer: {'type': 'string', 'value': 'The first dataframe has 500 rows and 14 columns.'}
+2024-02-29 20:28:41 [INFO] Executed in: 9.364301204681396s
+2024-02-29 20:28:41 [INFO] 127.0.0.1 - - [29/Feb/2024 20:28:41] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 20:31:28 [INFO] 127.0.0.1 - - [29/Feb/2024 20:31:28] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 20:31:28 [INFO] Question: how many customers with age more than 40
+2024-02-29 20:31:28 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:31:28 [INFO] Prompt ID: 9acc9aa0-d5fe-4874-ba0c-593ca29966cd
+2024-02-29 20:31:28 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+</dataframe>
+
+<conversation>
+User: how many customers with age more than 40
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 20:31:37 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 20:31:37 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the dataframe from the list
+    df = dfs[0]
+    
+    # Filter customers with age more than 40
+    customers_over_40 = df[df['Age'] > 40]
+    
+    # Get the count of customers with age more than 40
+    count_customers_over_40 = customers_over_40.shape[0]
+    
+    return { "type": "number", "value": count_customers_over_40 }
+```
+
+2024-02-29 20:31:37 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:31:37 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    df = dfs[0]
+    customers_over_40 = df[df['Age'] > 40]
+    count_customers_over_40 = customers_over_40.shape[0]
+    return {'type': 'number', 'value': count_customers_over_40}
+        ```
+2024-02-29 20:31:37 [INFO] Answer: {'type': 'number', 'value': 162}
+2024-02-29 20:31:37 [INFO] Executed in: 8.46920394897461s
+2024-02-29 20:31:37 [INFO] 127.0.0.1 - - [29/Feb/2024 20:31:37] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 20:39:00 [INFO] 127.0.0.1 - - [29/Feb/2024 20:39:00] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 20:39:00 [INFO] Question: how many  customers with the name HIll are there?
+2024-02-29 20:39:00 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:39:00 [INFO] Prompt ID: b4b3322e-15ec-4dc7-a8d7-a1f28ac5ee06
+2024-02-29 20:39:00 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+</dataframe>
+
+<conversation>
+User: how many  customers with the name HIll are there?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 20:39:06 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 20:39:06 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Processing the data to answer the user's question
+    count_hill_customers = dfs[0]['Surname'].str.lower().str.count('hill').sum()
+    
+    return { "type": "number", "value": count_hill_customers }
+```
+
+2024-02-29 20:39:06 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:39:06 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    count_hill_customers = dfs[0]['Surname'].str.lower().str.count('hill').sum()
+    return {'type': 'number', 'value': count_hill_customers}
+        ```
+2024-02-29 20:39:06 [INFO] Answer: {'type': 'number', 'value': 3}
+2024-02-29 20:39:06 [INFO] Executed in: 6.368787050247192s
+2024-02-29 20:39:06 [INFO] 127.0.0.1 - - [29/Feb/2024 20:39:06] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2024-02-29 20:40:47 [INFO]  * Detected change in '/Users/arvin/Documents/SINGL- DEMO/backend/back.py', reloading
+2024-02-29 20:40:51 [INFO] Question: how many  customers with the name HIll are there?
+2024-02-29 20:40:51 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:40:51 [INFO] Prompt ID: 3a2adcf1-6f39-4d52-b810-e976f4c180d9
+2024-02-29 20:40:51 [INFO] Using cached response
+2024-02-29 20:40:51 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Processing the data to answer the user's question
+    count_hill_customers = dfs[0]['Surname'].str.lower().str.count('hill').sum()
+    
+    return { "type": "number", "value": count_hill_customers }
+```
+
+2024-02-29 20:40:51 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:40:51 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    count_hill_customers = dfs[0]['Surname'].str.lower().str.count('hill').sum()
+    return {'type': 'number', 'value': count_hill_customers}
+        ```
+2024-02-29 20:40:51 [INFO] Answer: {'type': 'number', 'value': 3}
+2024-02-29 20:40:51 [INFO] Executed in: 0.06362390518188477s
+2024-02-29 20:40:51 [INFO] 127.0.0.1 - - [29/Feb/2024 20:40:51] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 20:41:11 [INFO]  * Detected change in '/Users/arvin/Documents/SINGL- DEMO/backend/back.py', reloading
+2024-02-29 20:41:15 [INFO] Question: how many data?
+2024-02-29 20:41:15 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:41:15 [INFO] Prompt ID: 410fa30d-f20c-4522-8a82-aec02ff681b7
+2024-02-29 20:41:15 [INFO] Using cached response
+2024-02-29 20:41:15 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extracting the last message from the conversation
+    last_message = "how many data?"
+    
+    # Checking the last message to determine the response
+    if last_message == "how many data?":
+        # Returning the number of rows and columns in the first dataframe
+        return { "type": "string", "value": f"The first dataframe has {dfs[0].shape[0]} rows and {dfs[0].shape[1]} columns." }
+```
+
+2024-02-29 20:41:15 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:41:15 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    last_message = 'how many data?'
+    if last_message == 'how many data?':
+        return {'type': 'string', 'value': f'The first dataframe has {dfs[0].shape[0]} rows and {dfs[0].shape[1]} columns.'}
+        ```
+2024-02-29 20:41:15 [INFO] Answer: {'type': 'string', 'value': 'The first dataframe has 500 rows and 14 columns.'}
+2024-02-29 20:41:15 [INFO] Executed in: 0.06049013137817383s
+2024-02-29 20:41:15 [INFO] 127.0.0.1 - - [29/Feb/2024 20:41:15] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 20:43:43 [INFO] 127.0.0.1 - - [29/Feb/2024 20:43:43] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 20:43:43 [INFO] Question: how many?
+2024-02-29 20:43:43 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:43:43 [INFO] Prompt ID: 952be304-1eac-467b-b31c-242174f81531
+2024-02-29 20:43:43 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+</dataframe>
+
+<conversation>
+User: how many?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 20:43:51 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 20:43:51 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extracting the last message from the conversation
+    last_message = "how many?"
+    
+    # Checking the last message to determine the analysis to perform
+    if "how many" in last_message:
+        # Counting the number of rows in the first dataframe
+        num_rows = dfs[0].shape[0]
+        result = { "type": "number", "value": num_rows }
+        return result
+```
+
+2024-02-29 20:43:51 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:43:51 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    last_message = 'how many?'
+    if 'how many' in last_message:
+        num_rows = dfs[0].shape[0]
+        result = {'type': 'number', 'value': num_rows}
+        return result
+        ```
+2024-02-29 20:43:51 [INFO] Answer: {'type': 'number', 'value': 500}
+2024-02-29 20:43:51 [INFO] Executed in: 7.213345766067505s
+2024-02-29 20:43:51 [INFO] 127.0.0.1 - - [29/Feb/2024 20:43:51] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 20:45:04 [INFO] 127.0.0.1 - - [29/Feb/2024 20:45:04] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 20:45:04 [INFO] Question: how many
+2024-02-29 20:45:04 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:45:04 [INFO] Prompt ID: b1713126-1faa-4c98-908d-1a76a2bdfcc7
+2024-02-29 20:45:04 [INFO] Using cached response
+2024-02-29 20:45:04 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    return { "type": "number", "value": dfs[0].shape[0] }
+```
+
+2024-02-29 20:45:04 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:45:04 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    return {'type': 'number', 'value': dfs[0].shape[0]}
+        ```
+2024-02-29 20:45:04 [INFO] Answer: {'type': 'number', 'value': 500}
+2024-02-29 20:45:04 [INFO] Executed in: 0.01673102378845215s
+2024-02-29 20:45:04 [INFO] 127.0.0.1 - - [29/Feb/2024 20:45:04] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 20:46:39 [INFO] 127.0.0.1 - - [29/Feb/2024 20:46:39] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 20:46:40 [INFO] Question: how many?
+2024-02-29 20:46:40 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:46:40 [INFO] Prompt ID: 00078832-8dde-48fc-978b-f1f05c50d3ac
+2024-02-29 20:46:40 [INFO] Using cached response
+2024-02-29 20:46:40 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extracting the last message from the conversation
+    last_message = "how many?"
+    
+    # Checking the last message to determine the analysis to perform
+    if "how many" in last_message:
+        # Counting the number of rows in the first dataframe
+        num_rows = dfs[0].shape[0]
+        result = { "type": "number", "value": num_rows }
+        return result
+```
+
+2024-02-29 20:46:40 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:46:40 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    last_message = 'how many?'
+    if 'how many' in last_message:
+        num_rows = dfs[0].shape[0]
+        result = {'type': 'number', 'value': num_rows}
+        return result
+        ```
+2024-02-29 20:46:40 [INFO] Answer: {'type': 'number', 'value': 500}
+2024-02-29 20:46:40 [INFO] Executed in: 0.010170698165893555s
+2024-02-29 20:46:40 [INFO] 127.0.0.1 - - [29/Feb/2024 20:46:40] "POST /api/chat HTTP/1.1" 200 -
+2024-02-29 20:52:43 [INFO] 127.0.0.1 - - [29/Feb/2024 20:52:43] "OPTIONS /api/chat HTTP/1.1" 200 -
+2024-02-29 20:52:43 [INFO] Question: how many have credit score of 850 or more?
+2024-02-29 20:52:43 [INFO] Running PandasAI with openai LLM...
+2024-02-29 20:52:43 [INFO] Prompt ID: 1c2b7019-bef5-4bc8-a902-666f42bd394f
+2024-02-29 20:52:43 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+</dataframe>
+
+<conversation>
+User: how many have credit score of 850 or more?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-02-29 20:52:50 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-02-29 20:52:50 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Process
+    credit_score_850_or_more = dfs[0][dfs[0]['CreditScore'] >= 850]
+    
+    # Analyze
+    count_credit_score_850_or_more = credit_score_850_or_more.shape[0]
+    
+    return { "type": "number", "value": count_credit_score_850_or_more }
+```
+
+2024-02-29 20:52:50 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-02-29 20:52:50 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    credit_score_850_or_more = dfs[0][dfs[0]['CreditScore'] >= 850]
+    count_credit_score_850_or_more = credit_score_850_or_more.shape[0]
+    return {'type': 'number', 'value': count_credit_score_850_or_more}
+        ```
+2024-02-29 20:52:50 [INFO] Answer: {'type': 'number', 'value': 10}
+2024-02-29 20:52:50 [INFO] Executed in: 7.561161994934082s
+2024-02-29 20:52:50 [INFO] 127.0.0.1 - - [29/Feb/2024 20:52:50] "POST /api/chat HTTP/1.1" 200 -
+2024-03-04 20:11:34 [INFO] Question: None
+2024-03-04 20:11:34 [INFO] Running PandasAI with openai LLM...
+2024-03-04 20:11:34 [INFO] Prompt ID: 9ffcdbe0-7929-4ee5-acb4-a38a69245ab7
+2024-03-04 20:11:34 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 499 rows and 11 columns.
+This is the metadata of the dataframe dfs[0]:
+inv_date,invoice_number,account,part_number,qty,sell_price,total_sale_value,disc,cost_price,total_cost_value,profit
+7/1/2010,INV7811682,ELEMERA,P522817,1,788.5665,788.5665,36,678.16719,678.16719,110.39931
+2/25/2010,INV7811426,ELEMERA,P522817,1,788.5665,788.5665,36,678.16719,678.16719,110.39931
+4/1/2010,INV7811696,ELEMERA,P522817,1,1232.1405,1232.1405,36,1059.64083,1059.64083,172.49967
+</dataframe>
+
+<conversation>
+User: None
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-03-04 20:11:40 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-04 20:11:40 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the last message from the conversation
+    last_message = "invoice_number column contains unique values."
+    
+    # Return the updated function
+    return { "type": "string", "value": last_message }
+```
+
+2024-03-04 20:11:40 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-03-04 20:11:40 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    last_message = 'invoice_number column contains unique values.'
+    return {'type': 'string', 'value': last_message}
+        ```
+2024-03-04 20:11:40 [INFO] Answer: {'type': 'string', 'value': 'invoice_number column contains unique values.'}
+2024-03-04 20:11:40 [INFO] Executed in: 6.926667928695679s
+2024-03-04 20:11:40 [INFO] 127.0.0.1 - - [04/Mar/2024 20:11:40] "POST /api/chat/erp HTTP/1.1" 200 -
+2024-03-04 20:13:23 [INFO] 127.0.0.1 - - [04/Mar/2024 20:13:23] "OPTIONS /api/chat/banking HTTP/1.1" 200 -
+2024-03-04 20:13:23 [INFO] Question: how many customers?
+2024-03-04 20:13:23 [INFO] Running PandasAI with openai LLM...
+2024-03-04 20:13:23 [INFO] Prompt ID: d91cc36b-7dbf-4f62-b784-d7de32684d83
+2024-03-04 20:13:23 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+</dataframe>
+
+<conversation>
+User: how many customers?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-03-04 20:13:29 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-04 20:13:29 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    if "how many customers?" in conversation[-1]:
+        num_customers = dfs[0].shape[0]
+        return { "type": "number", "value": num_customers }
+```
+
+2024-03-04 20:13:29 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-03-04 20:13:29 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    if 'how many customers?' in conversation[-1]:
+        num_customers = dfs[0].shape[0]
+        return {'type': 'number', 'value': num_customers}
+        ```
+2024-03-04 20:13:29 [WARNING] Error of executing code
+2024-03-04 20:13:29 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2024-03-04 20:13:29 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/smart_datalake/__init__.py", line 438, in chat
+    result = self._code_manager.execute_code(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 286, in execute_code
+    return analyze_data(self._get_originals(dfs))
+  File "<string>", line 20, in analyze_data
+NameError: name 'conversation' is not defined
+. Retrying
+2024-03-04 20:13:29 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 500 rows and 14 columns.
+This is the metadata of the dataframe dfs[0]:
+RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited
+3,15619304,Onio,502,France,Female,42.0,8,159660.8,3,1.0,0.0,113931.57,1
+2,15647311,Hill,608,Spain,Female,41.0,1,83807.86,1,0.0,1.0,112542.58,0
+1,15634602,Hargrave,619,France,Female,42.0,2,0.0,1,1.0,1.0,101348.88,1
+</dataframe>
+
+The user asked the following question:
+User: how many customers?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    if "how many customers?" in conversation[-1]:
+        num_customers = dfs[0].shape[0]
+        return { "type": "number", "value": num_customers }
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/smart_datalake/__init__.py", line 438, in chat
+    result = self._code_manager.execute_code(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandasai/helpers/code_manager.py", line 286, in execute_code
+    return analyze_data(self._get_originals(dfs))
+  File "<string>", line 20, in analyze_data
+NameError: name 'conversation' is not defined
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2024-03-04 20:13:39 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-04 20:13:39 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-03-04 20:13:39 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    if 'how many customers?' in conversation[-1]:
+        num_customers = dfs[0].shape[0]
+        return {'type': 'number', 'value': num_customers}
+
+
+conversation = ['how many customers?']
+dfs = [pd.DataFrame({'RowNumber': [3, 2, 1], 'CustomerId': [15619304, 15647311, 15634602], 'Surname': ['Onio', 'Hill', 'Hargrave'], 'CreditScore': [502, 608, 619], 'Geography': ['France', 'Spain', 'France'], 'Gender': ['Female', 'Female', 'Female'], 'Age': [42.0, 41.0, 42.0], 'Tenure': [8, 1, 2], 'Balance': [159660.8, 83807.86, 0.0], 'NumOfProducts': [3, 1, 1], 'HasCrCard': [1.0, 0.0, 1.0], 'IsActiveMember': [0.0, 1.0, 1.0], 'EstimatedSalary': [113931.57, 112542.58, 101348.88], 'Exited': [1, 0, 1]})]
+analyze_data(dfs)
+        ```
+2024-03-04 20:13:39 [INFO] Answer: {'type': 'number', 'value': 500}
+2024-03-04 20:13:39 [INFO] Executed in: 16.56102180480957s
+2024-03-04 20:13:39 [INFO] 127.0.0.1 - - [04/Mar/2024 20:13:39] "POST /api/chat/banking HTTP/1.1" 200 -
+2024-03-04 20:27:09 [INFO] 127.0.0.1 - - [04/Mar/2024 20:27:09] "OPTIONS /api/chat/crm HTTP/1.1" 200 -
+2024-03-04 20:27:09 [INFO] Question: what is the frequency of buying blouse?
+2024-03-04 20:27:09 [INFO] Running PandasAI with openai LLM...
+2024-03-04 20:27:09 [INFO] Prompt ID: e544a29c-78ff-455c-8940-d53086980a26
+2024-03-04 20:27:09 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 499 rows and 18 columns.
+This is the metadata of the dataframe dfs[0]:
+Customer ID,Age,Gender,Item Purchased,Category,Purchase Amount (USD),Location,Size,Color,Season,Review Rating,Subscription Status,Shipping Type,Discount Applied,Promo Code Used,Previous Purchases,Payment Method,Frequency of Purchases
+1,55,Male,Blouse,Clothing,53,Kentucky,L,Gray,Winter,3.1,Yes,Express,Yes,Yes,14,Venmo,Fortnightly
+2,19,Male,Sweater,Clothing,64,Maine,L,Maroon,Winter,3.1,Yes,Express,Yes,Yes,2,Cash,Fortnightly
+3,50,Male,Jeans,Clothing,73,Massachusetts,S,Maroon,Spring,3.1,Yes,Free Shipping,Yes,Yes,23,Credit Card,Weekly
+</dataframe>
+
+<conversation>
+User: what is the frequency of buying blouse?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-03-04 20:27:19 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-04 20:27:19 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the relevant dataframe from the list
+    df = dfs[0]
+    
+    # Group the data by 'Item Purchased' and calculate the frequency of each item
+    item_frequency = df['Item Purchased'].value_counts()
+    
+    # Get the frequency of buying blouse
+    blouse_frequency = item_frequency.get('Blouse', 0)
+    
+    # Return the result as a string
+    return { "type": "string", "value": f"The frequency of buying blouse is {blouse_frequency}." }
+```
+
+2024-03-04 20:27:19 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-03-04 20:27:19 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    df = dfs[0]
+    item_frequency = df['Item Purchased'].value_counts()
+    blouse_frequency = item_frequency.get('Blouse', 0)
+    return {'type': 'string', 'value': f'The frequency of buying blouse is {blouse_frequency}.'}
+        ```
+2024-03-04 20:27:19 [INFO] Answer: {'type': 'string', 'value': 'The frequency of buying blouse is 14.'}
+2024-03-04 20:27:19 [INFO] Executed in: 9.798603057861328s
+2024-03-04 20:27:19 [INFO] 127.0.0.1 - - [04/Mar/2024 20:27:19] "POST /api/chat/crm HTTP/1.1" 200 -
+2024-03-04 20:27:46 [INFO] 127.0.0.1 - - [04/Mar/2024 20:27:46] "OPTIONS /api/chat/crm HTTP/1.1" 200 -
+2024-03-04 20:27:46 [INFO] Question: What is the season for buying blouse?
+2024-03-04 20:27:46 [INFO] Running PandasAI with openai LLM...
+2024-03-04 20:27:46 [INFO] Prompt ID: 2461b015-9ba9-4eb1-a6ab-2456b04e2cdb
+2024-03-04 20:27:46 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 499 rows and 18 columns.
+This is the metadata of the dataframe dfs[0]:
+Customer ID,Age,Gender,Item Purchased,Category,Purchase Amount (USD),Location,Size,Color,Season,Review Rating,Subscription Status,Shipping Type,Discount Applied,Promo Code Used,Previous Purchases,Payment Method,Frequency of Purchases
+3,50,Male,Jeans,Clothing,73,Massachusetts,S,Maroon,Spring,3.1,Yes,Free Shipping,Yes,Yes,23,Credit Card,Weekly
+2,19,Male,Sweater,Clothing,64,Maine,L,Maroon,Winter,3.1,Yes,Express,Yes,Yes,2,Cash,Fortnightly
+1,55,Male,Blouse,Clothing,53,Kentucky,L,Gray,Winter,3.1,Yes,Express,Yes,Yes,14,Venmo,Fortnightly
+</dataframe>
+
+<conversation>
+User: What is the season for buying blouse?
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-03-04 20:27:54 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-04 20:27:54 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the relevant information from the dataframe
+    blouse_season = dfs[0][dfs[0]['Item Purchased'] == 'Blouse']['Season'].unique()[0]
+    
+    return { "type": "string", "value": f"The season for buying blouse is {blouse_season}." }
+```
+
+2024-03-04 20:27:54 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-03-04 20:27:54 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    blouse_season = dfs[0][dfs[0]['Item Purchased'] == 'Blouse']['Season'].unique()[0]
+    return {'type': 'string', 'value': f'The season for buying blouse is {blouse_season}.'}
+        ```
+2024-03-04 20:27:54 [INFO] Answer: {'type': 'string', 'value': 'The season for buying blouse is Winter.'}
+2024-03-04 20:27:54 [INFO] Executed in: 8.533898830413818s
+2024-03-04 20:27:54 [INFO] 127.0.0.1 - - [04/Mar/2024 20:27:54] "POST /api/chat/crm HTTP/1.1" 200 -
+2024-03-04 20:42:36 [INFO] 127.0.0.1 - - [04/Mar/2024 20:42:36] "OPTIONS /api/chat/erp HTTP/1.1" 200 -
+2024-03-04 20:42:36 [INFO] Question: how much is the total cost value of invoice number INV7811696
+2024-03-04 20:42:36 [INFO] Running PandasAI with openai LLM...
+2024-03-04 20:42:36 [INFO] Prompt ID: 40aa53ba-6e05-4d8d-b3dd-66a4cb07aae7
+2024-03-04 20:42:36 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 499 rows and 11 columns.
+This is the metadata of the dataframe dfs[0]:
+inv_date,invoice_number,account,part_number,qty,sell_price,total_sale_value,disc,cost_price,total_cost_value,profit
+4/1/2010,INV7811696,ELEMERA,P522817,1,1232.1405,1232.1405,36,1059.64083,1059.64083,172.49967
+7/1/2010,INV7811682,ELEMERA,P522817,1,788.5665,788.5665,36,678.16719,678.16719,110.39931
+2/25/2010,INV7811426,ELEMERA,P522817,1,788.5665,788.5665,36,678.16719,678.16719,110.39931
+</dataframe>
+
+<conversation>
+User: how much is the total cost value of invoice number INV7811696
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-03-04 20:42:47 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-04 20:42:47 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Extract the invoice number from the last message in the conversation
+    invoice_number = 'INV7811696'
+    
+    # Filter the dataframe to get the row corresponding to the provided invoice number
+    selected_row = dfs[0][dfs[0]['invoice_number'] == invoice_number]
+    
+    # Get the total cost value from the selected row
+    total_cost_value = selected_row['total_cost_value'].values[0]
+    
+    return {"type": "number", "value": total_cost_value}
+```
+
+2024-03-04 20:42:47 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-03-04 20:42:47 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    invoice_number = 'INV7811696'
+    selected_row = dfs[0][dfs[0]['invoice_number'] == invoice_number]
+    total_cost_value = selected_row['total_cost_value'].values[0]
+    return {'type': 'number', 'value': total_cost_value}
+        ```
+2024-03-04 20:42:47 [INFO] Answer: {'type': 'number', 'value': 1059.64083}
+2024-03-04 20:42:47 [INFO] Executed in: 10.799874067306519s
+2024-03-04 20:42:47 [INFO] 127.0.0.1 - - [04/Mar/2024 20:42:47] "POST /api/chat/erp HTTP/1.1" 200 -
+2024-03-04 21:08:58 [INFO] 127.0.0.1 - - [04/Mar/2024 21:08:58] "OPTIONS /api/chat/policy HTTP/1.1" 200 -
+2024-03-04 21:08:58 [INFO] Question: what percentage of total customers are in southwest region 
+2024-03-04 21:08:58 [INFO] Running PandasAI with openai LLM...
+2024-03-04 21:08:58 [INFO] Prompt ID: aaeb3e53-b999-40d7-b42e-39f81708810a
+2024-03-04 21:08:58 [INFO] Using prompt: You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 1338 rows and 7 columns.
+This is the metadata of the dataframe dfs[0]:
+age,sex,bmi,children,smoker,region,charges
+28,male,33.0,3,no,southeast,4449.462
+18,male,33.77,1,no,southeast,1725.5523
+19,female,27.9,0,yes,southwest,16884.924
+</dataframe>
+
+<conversation>
+User: what percentage of total customers are in southwest region 
+</conversation>
+
+This is the initial python function. Do not change the params. Given the context, use the right dataframes.
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Take a deep breath and reason step-by-step. Act as a senior data analyst.
+In the answer, you must never write the "technical" names of the tables.
+Based on the last message in the conversation:
+- return the updated analyze_data function wrapped within ```python ```
+2024-03-04 21:09:06 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-03-04 21:09:06 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    
+    # Calculate the percentage of total customers in southwest region
+    total_customers = dfs[0].shape[0]
+    southwest_customers = dfs[0][dfs[0]['region'] == 'southwest'].shape[0]
+    percentage_southwest = (southwest_customers / total_customers) * 100
+    
+    return { "type": "number", "value": percentage_southwest }
+```
+
+2024-03-04 21:09:06 [INFO] Saving charts to /Users/arvin/Documents/SINGL- DEMO/temp_chart.png
+2024-03-04 21:09:06 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data, using the provided dataframes (`dfs`).
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart you must save it as an image in /Users/arvin/Documents/SINGL- DEMO/temp_chart.png and not show the chart.)
+    If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/Users/arvin/Documents/SINGL- DEMO/temp_chart.png" }
+    """
+    total_customers = dfs[0].shape[0]
+    southwest_customers = dfs[0][dfs[0]['region'] == 'southwest'].shape[0]
+    percentage_southwest = southwest_customers / total_customers * 100
+    return {'type': 'number', 'value': percentage_southwest}
+        ```
+2024-03-04 21:09:06 [INFO] Answer: {'type': 'number', 'value': 24.28998505231689}
+2024-03-04 21:09:06 [INFO] Executed in: 7.279767036437988s
+2024-03-04 21:09:06 [INFO] 127.0.0.1 - - [04/Mar/2024 21:09:06] "POST /api/chat/policy HTTP/1.1" 200 -

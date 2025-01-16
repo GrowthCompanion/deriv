@@ -1,0 +1,33 @@
+/* styles.css */
+
+body {
+    margin: 0;
+  }
+  
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 100vw;
+  }
+  
+  .hidefooter {
+    position: absolute;
+    width: 150px; /* Adjust the width as needed */
+    height: 35px; /* Adjust the height as needed */
+    background: rgb(242, 240, 246);
+    right: 0px;
+    bottom: 0px;
+    z-index: 2;
+    display: block;
+    color: rgb(0, 0, 0);
+  }
+  
+  iframe {
+    display: block;
+    background: #ffffff;
+    border: none;
+    height: 99vh;
+    width: 99vw;
+  }
+  
